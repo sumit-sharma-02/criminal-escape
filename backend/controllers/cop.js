@@ -16,37 +16,45 @@ exports.copSearch = catchAsyncErrors(async (req, res, next) => {
   let cities = getCities();
   let vehicles = getVehicles();
 
-  const { copCity, copVehicle, copName } = req.body;
+  const { cops } = req.body;
 
-  if (!copCity) {
-    return next(new ErrorHandler("Please provide city of the cop.", 403));
-  }
+  let criminalFound;
 
-  if (!copVehicle) {
-    return next(new ErrorHandler("Please provide vehicle of the cop.", 403));
-  }
+  cops.map(cop => {
+    if (!cop.city) {
+      return next(new ErrorHandler("Please provide city of the cop.", 403));
+    }
+  
+    if (!cop.vehicle) {
+      return next(new ErrorHandler("Please provide vehicle of the cop.", 403));
+    }
+  
+    if (!cop.name) {
+      return next(new ErrorHandler("Please provide the cop name.", 403));
+    }
+  
+    if (!cities.find((city) => city.name === cop.city)) {
+      return next(new ErrorHandler("City not found", 404));
+    }
+  
+    if (!vehicles.find((vehicle) => vehicle.type === cop.vehicle)) {
+      return next(new ErrorHandler("Vehicle not found", 404));
+    }
+  
+    const copDistance = cities.find((city) => city.name === cop.city).distance;
+    const vehicleRange = vehicles.find(
+      (vehicle) => vehicle.type === cop.vehicle
+    ).range;
+  
+    if (copDistance <= vehicleRange && cop.city === fugitiveLocation) {
+      criminalFound = cop
+    }
+  })
 
-  if (!copName) {
-    return next(new ErrorHandler("Please provide the cop name.", 403));
-  }
-
-  if (!cities.find((city) => city.name === copCity)) {
-    return next(new ErrorHandler("City not found", 404));
-  }
-
-  if (!vehicles.find((vehicle) => vehicle.type === copVehicle)) {
-    return next(new ErrorHandler("Vehicle not found", 404));
-  }
-
-  const copDistance = cities.find((city) => city.name === copCity).distance;
-  const vehicleRange = vehicles.find(
-    (vehicle) => vehicle.type === copVehicle
-  ).range;
-
-  if (copDistance <= vehicleRange && copCity === fugitiveLocation) {
+  if(criminalFound) {
     res.status(200).json({
       success: true,
-      copName: copName,
+      copName: criminalFound.name,
       message: "Criminal found successfully!",
     });
   } else {
