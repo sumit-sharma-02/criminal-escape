@@ -23,7 +23,7 @@ export const searchCriminal =
           `${server}/cop/search`,
         //   { cops: cop.city, copVehicle: cop.vehicle, copName: cop.name },
           { cops: copsDetails },
-          requestConfig
+        //   requestConfig
         );
 
       dispatch({
