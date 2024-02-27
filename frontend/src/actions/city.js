@@ -15,7 +15,7 @@ export const getAllCities = () => async (dispatch) => {
       },
     };
 
-    const { data } = await axios.get(`${server}/cities`, requestConfig);
+    const { data } = await axios.get(`${server}/cities`);
 
     dispatch({
       type: cityConstant.FETCH_CITIES_SUCCESS,
