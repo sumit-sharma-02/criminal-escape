@@ -13,6 +13,7 @@ export const getAllCities = () => async (dispatch) => {
       headers: {
         "Access-Control-Allow-Origin": "https://criminal-escape.vercel.app",
       },
+      withCredentials: true,
     };
 
     const { data } = await axios.get(`${server}/cities`, requestConfig);

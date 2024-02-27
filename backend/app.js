@@ -24,8 +24,8 @@ if (process.env.NODE_ENV !== "PRODUCTION") app.use(morgan("dev"));
 
 app.use(
   cors({
-    origin: [process.env.FRONTEND_URL],
-    // credentials: true,
+    origin: process.env.FRONTEND_URL,
+    credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE"],
   })
 );
