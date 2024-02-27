@@ -16,7 +16,7 @@ export const getAllVehicles = () => async (dispatch) => {
       withCredentials: true,
     };
 
-    const { data } = await axios.get(`${server}/vehicles`, requestConfig);
+    const { data } = await axios.get(`${server}/vehicles`);
 
     dispatch({
       type: vehicleConstant.FETCH_VEHICLES_SUCCESS,

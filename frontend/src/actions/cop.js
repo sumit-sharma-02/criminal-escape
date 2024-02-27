@@ -14,9 +14,9 @@ export const searchCriminal =
       const requestConfig = {
         headers: {
           "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "https://criminal-escape.vercel.app",
+        //   "Access-Control-Allow-Origin": "https://criminal-escape.vercel.app",
         },
-        withCredentials: true,
+        // withCredentials: true,
       };
 
         const { data } = await axios.post(

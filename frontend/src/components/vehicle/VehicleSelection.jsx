@@ -60,7 +60,7 @@ const VehicleSelection = ({ cop, cops, setCops, loading, vehicles, error }) => {
               <Popover.Panel className="absolute left-1/2 z-10 mt-3 w-screen max-w-sm -translate-x-1/2 transform px-4 sm:px-0 lg:max-w-full">
                 {({ close }) => (
                   <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black/5">
-                    <div className="relative grid gap-8 bg-white p-7 lg:grid-cols-2">
+                    <div className="relative grid gap-8 bg-white p-7 lg:grid-cols-1">
                       {vehicles.map((vehicle) => (
                         <div
                           key={vehicle.type}
