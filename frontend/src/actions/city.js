@@ -11,11 +11,11 @@ export const getAllCities = () => async (dispatch) => {
 
     const requestConfig = {
       headers: {
-        "Access-Control-Allow-Origin": "https://criminal-escape-api.vercel.app",
+        "Access-Control-Allow-Origin": "https://criminal-escape.vercel.app",
       },
     };
 
-    const { data } = await axios.get(`${server}/cities`);
+    const { data } = await axios.get(`${server}/cities`, requestConfig);
 
     dispatch({
       type: cityConstant.FETCH_CITIES_SUCCESS,

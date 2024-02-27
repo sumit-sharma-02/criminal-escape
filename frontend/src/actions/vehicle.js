@@ -11,11 +11,11 @@ export const getAllVehicles = () => async (dispatch) => {
 
     const requestConfig = {
       headers: {
-        "Access-Control-Allow-Origin": "https://criminal-escape-api.vercel.app",
+        "Access-Control-Allow-Origin": "https://criminal-escape.vercel.app",
       },
     };
 
-    const { data } = await axios.get(`${server}/vehicles`);
+    const { data } = await axios.get(`${server}/vehicles`, requestConfig);
 
     dispatch({
       type: vehicleConstant.FETCH_VEHICLES_SUCCESS,
@@ -31,7 +31,7 @@ export const getAllVehicles = () => async (dispatch) => {
 
 // Clear Errors
 export const clearErrors = () => async (dispatch) => {
-    dispatch({
-      type: vehicleConstant.CLEAR_ERRORS,
-    });
-  };
+  dispatch({
+    type: vehicleConstant.CLEAR_ERRORS,
+  });
+};
