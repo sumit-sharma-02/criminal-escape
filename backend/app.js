@@ -22,13 +22,13 @@ app.use(
 // Setting up requests logs for development Environment
 if (process.env.NODE_ENV !== "PRODUCTION") app.use(morgan("dev"));
 
-app.use(
-  cors({
-    // origin: process.env.FRONTEND_URL,
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE"],
-  })
-);
+// app.use(
+//   cors({
+//     // origin: process.env.FRONTEND_URL,
+//     credentials: true,
+//     methods: ["GET", "POST", "PUT", "DELETE"],
+//   })
+// );
 
 // Import all the routes here...
 const cities = require("./routes/city");
