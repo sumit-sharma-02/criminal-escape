@@ -1,6 +1,6 @@
 <h1 align="center">Criminal Escape</h1> 
 
-<h2 align="center">A React application to catch criminals.</h2>
+<h2 align="center">An application to catch criminals.</h2>
 
 <br />
 <p align="center">
