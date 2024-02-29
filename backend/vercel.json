@@ -2,7 +2,6 @@
   "version": 2,
   "name": "criminal-escape-backend",
   "builds": [{ "src": "server.js", "use": "@vercel/node" }],
-  "routes": [{ "src": "/(.*)", "dest": "/server.js" }],
   "headers": [
     {
       "source": "/(.*)",
